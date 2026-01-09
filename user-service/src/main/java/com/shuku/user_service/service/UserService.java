@@ -3,12 +3,10 @@ package com.shuku.user_service.service;
 import com.shuku.user_service.dto.UserDto;
 import com.shuku.user_service.entity.User;
 import com.shuku.user_service.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Slf4j
 @Service
 public class UserService {
     private UserRepository userRepository;
@@ -18,7 +16,6 @@ public class UserService {
         this.userRepository=userRepository;
     }
     public UserDto createUser(UserDto input){
-        log.info("Creating user: {}",input);
         final User createdUser = User.builder()
                 .name(input.getName())
                 .surname(input.getSurname())
@@ -32,7 +29,6 @@ public class UserService {
     }
 
     public UserDto getUserById(Long Id){
-        log.info("Getting user by id: {}",Id);
         Optional<User> optional = userRepository.findById(Id);
         if(optional.isPresent()){
             User user = optional.get();
@@ -45,7 +41,6 @@ public class UserService {
     }
 
     public void updateUser(Long Id,UserDto userDto){
-        log.info("Updating user with Id: {}",Id);
         User user = userRepository.findById(Id).orElseThrow(() -> new IllegalArgumentException("User not found"));
         user.setName(userDto.getName());
         user.setSurname(userDto.getSurname());
@@ -58,7 +53,6 @@ public class UserService {
     }
 
     public void deleteById(Long Id){
-        log.info("Deleting user with Id: {}",Id);
         User user = userRepository.findById(Id).orElseThrow(()-> new IllegalArgumentException("User not found"));
         userRepository.delete(user);
     }

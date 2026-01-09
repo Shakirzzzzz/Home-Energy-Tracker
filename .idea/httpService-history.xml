@@ -33,9 +33,6 @@
               <option name="fileNames">
                 <array />
               </option>
-              <option name="headers">
-                <map />
-              </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="1" />
               <option name="method" value="GET" />
@@ -112,9 +109,6 @@
               <option name="fileNames">
                 <array />
               </option>
-              <option name="headers">
-                <map />
-              </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="4" />
               <option name="method" value="GET" />
@@ -136,9 +130,6 @@
               <option name="contentType" value="application/x-www-form-urlencoded" />
               <option name="fileNames">
                 <array />
-              </option>
-              <option name="headers">
-                <map />
               </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="5" />
@@ -162,9 +153,6 @@
               <option name="fileNames">
                 <array />
               </option>
-              <option name="headers">
-                <map />
-              </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="6" />
               <option name="method" value="GET" />
@@ -186,9 +174,6 @@
               <option name="contentType" value="application/x-www-form-urlencoded" />
               <option name="fileNames">
                 <array />
-              </option>
-              <option name="headers">
-                <map />
               </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="7" />
@@ -220,9 +205,6 @@
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="8" />
               <option name="method" value="POST" />
-              <option name="params">
-                <map />
-              </option>
               <option name="res" value="{&quot;id&quot;:2,&quot;name&quot;:&quot;Shakir&quot;,&quot;surname&quot;:&quot;Fayaz&quot;,&quot;email&quot;:&quot;s.shakirz26@gmail.com&quot;,&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
               <option name="time" value="2026-01-08 22:35:31" />
               <option name="uri" value="/api/v1/user" />
@@ -237,9 +219,6 @@
               <option name="fileNames">
                 <array />
               </option>
-              <option name="headers">
-                <map />
-              </option>
               <option name="host" value="http://127.0.0.1:8080" />
               <option name="id" value="9" />
               <option name="method" value="GET" />
@@ -250,6 +229,131 @@
               </option>
               <option name="res" value="{&quot;id&quot;:2,&quot;name&quot;:&quot;Shakir&quot;,&quot;surname&quot;:&quot;Fayaz&quot;,&quot;email&quot;:&quot;s.shakirz26@gmail.com&quot;,&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
               <option name="time" value="2026-01-08 22:35:43" />
+              <option name="uri" value="/api/v1/user/{Id}" />
+            </ReqHistory>
+          </value>
+        </entry>
+        <entry key="10">
+          <value>
+            <ReqHistory>
+              <option name="body" value="{&#10;  &quot;name&quot;: &quot;Shuku&quot;,&#10;  &quot;surname&quot;: &quot;Fayaz&quot;,&#10;  &quot;email&quot;: &quot;info@shuku.com&quot;,&#10;  &quot;address&quot;: &quot;Ajar,Bandipora&quot;,&#10;  &quot;alerting&quot;: false,&#10;  &quot;energyAlertingThreshold&quot;: 0&#10;}" />
+              <option name="contentType" value="application/json" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map>
+                  <entry key="Content-Type" value="application/json" />
+                </map>
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="10" />
+              <option name="method" value="POST" />
+              <option name="params">
+                <map />
+              </option>
+              <option name="res" value="{&quot;id&quot;:3,&quot;name&quot;:&quot;Shuku&quot;,&quot;surname&quot;:&quot;Fayaz&quot;,&quot;email&quot;:&quot;info@shuku.com&quot;,&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
+              <option name="time" value="2026-01-09 14:40:37" />
+              <option name="uri" value="/api/v1/user" />
+            </ReqHistory>
+          </value>
+        </entry>
+        <entry key="11">
+          <value>
+            <ReqHistory>
+              <option name="body" value="" />
+              <option name="contentType" value="application/x-www-form-urlencoded" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map />
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="11" />
+              <option name="method" value="GET" />
+              <option name="params">
+                <map>
+                  <entry key="Id" value="1" />
+                </map>
+              </option>
+              <option name="res" value="Error request, response status: 404" />
+              <option name="time" value="2026-01-09 14:40:54" />
+              <option name="uri" value="/api/v1/user/{Id}" />
+            </ReqHistory>
+          </value>
+        </entry>
+        <entry key="12">
+          <value>
+            <ReqHistory>
+              <option name="body" value="" />
+              <option name="contentType" value="application/x-www-form-urlencoded" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map />
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="12" />
+              <option name="method" value="GET" />
+              <option name="params">
+                <map>
+                  <entry key="Id" value="2" />
+                </map>
+              </option>
+              <option name="res" value="{&quot;id&quot;:2,&quot;name&quot;:&quot;Shakir&quot;,&quot;surname&quot;:&quot;Fayaz&quot;,&quot;email&quot;:&quot;s.shakirz26@gmail.com&quot;,&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
+              <option name="time" value="2026-01-09 14:41:02" />
+              <option name="uri" value="/api/v1/user/{Id}" />
+            </ReqHistory>
+          </value>
+        </entry>
+        <entry key="13">
+          <value>
+            <ReqHistory>
+              <option name="body" value="" />
+              <option name="contentType" value="application/x-www-form-urlencoded" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map />
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="13" />
+              <option name="method" value="GET" />
+              <option name="params">
+                <map>
+                  <entry key="Id" value="2" />
+                </map>
+              </option>
+              <option name="res" value="{&quot;id&quot;:2,&quot;name&quot;:&quot;Shakir&quot;,&quot;surname&quot;:&quot;Fayaz&quot;,&quot;email&quot;:&quot;s.shakirz26@gmail.com&quot;,&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
+              <option name="time" value="2026-01-09 15:17:03" />
+              <option name="uri" value="/api/v1/user/{Id}" />
+            </ReqHistory>
+          </value>
+        </entry>
+        <entry key="14">
+          <value>
+            <ReqHistory>
+              <option name="body" value="" />
+              <option name="contentType" value="application/x-www-form-urlencoded" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map />
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="14" />
+              <option name="method" value="GET" />
+              <option name="params">
+                <map>
+                  <entry key="Id" value="2" />
+                </map>
+              </option>
+              <option name="res" value="{&quot;address&quot;:&quot;Ajar,Bandipora&quot;,&quot;alerting&quot;:false,&quot;email&quot;:&quot;s.shakirz26@gmail.com&quot;,&quot;energyAlertingThreshold&quot;:0.0,&quot;id&quot;:2,&quot;name&quot;:&quot;Shakir&quot;,&quot;surname&quot;:&quot;Fayaz&quot;}" />
+              <option name="time" value="2026-01-09 15:33:35" />
               <option name="uri" value="/api/v1/user/{Id}" />
             </ReqHistory>
           </value>
