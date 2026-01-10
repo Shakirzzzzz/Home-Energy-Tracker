@@ -2,6 +2,7 @@ package com.shuku.user_service.service;
 
 import com.shuku.user_service.dto.UserDto;
 import com.shuku.user_service.entity.User;
+import com.shuku.user_service.exception.UserNotFoundException;
 import com.shuku.user_service.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,13 +36,13 @@ public class UserService {
             return toDto(user);
         }
         else{
-            return null;
+            throw  new UserNotFoundException("User not found with id:" + Id);
         }
 
     }
 
     public void updateUser(Long Id,UserDto userDto){
-        User user = userRepository.findById(Id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        User user = userRepository.findById(Id).orElseThrow(() -> new UserNotFoundException("User not found with id: " + Id));
         user.setName(userDto.getName());
         user.setSurname(userDto.getSurname());
         user.setEmail(userDto.getEmail());
@@ -53,7 +54,7 @@ public class UserService {
     }
 
     public void deleteById(Long Id){
-        User user = userRepository.findById(Id).orElseThrow(()-> new IllegalArgumentException("User not found"));
+        User user = userRepository.findById(Id).orElseThrow(()-> new UserNotFoundException("User not found with Id: "+ Id));
         userRepository.delete(user);
     }
 

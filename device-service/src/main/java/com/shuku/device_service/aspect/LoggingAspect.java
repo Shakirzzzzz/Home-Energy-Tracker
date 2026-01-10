@@ -1,4 +1,5 @@
-package com.shuku.user_service.aspect;
+package com.shuku.device_service.aspect;
+
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -14,17 +15,18 @@ import org.springframework.stereotype.Component;
 @Order(2)
 @Slf4j
 public class LoggingAspect {
-    @Pointcut("execution(* com.shuku.user_service.service.*.*(..))")
+
+    @Pointcut("execution(* com.shuku.device_service.service.*.*(..))")
     public void serviceMethods(){}
 
     @Before("serviceMethods()")
     public void logBefore(JoinPoint joinPoint){
-        log.info("Called User Service Method: {} with arguments: {}",joinPoint.getSignature().getName(),joinPoint.getArgs());
+        log.info("Called Device Service Method: {} with arguments: {}",joinPoint.getSignature().getName(),joinPoint.getArgs());
+
     }
 
-    @AfterReturning(pointcut = "serviceMethods()", returning = "result")
-    public void logAfterReturning(JoinPoint joinPoint, Object result){
-        log.info("User Service method: {}, returned: {}",joinPoint.getSignature().getName(),result);
-
+    @AfterReturning(pointcut = "serviceMethods()",returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint,Object result){
+        log.info(" Device Service method: {}, returned: {}", joinPoint.getSignature().getName(),result);
     }
 }

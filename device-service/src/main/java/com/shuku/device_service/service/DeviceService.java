@@ -2,6 +2,7 @@ package com.shuku.device_service.service;
 
 import com.shuku.device_service.dto.DeviceDto;
 import com.shuku.device_service.entity.Device;
+import com.shuku.device_service.exception.DeviceNotFoundException;
 import com.shuku.device_service.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class DeviceService {
     }
 
     public DeviceDto getDeviceById(Long Id) {
-        Device device = deviceRepository.findById(Id).orElseThrow(() -> new IllegalArgumentException("Device not found with id" + Id));
+        Device device = deviceRepository.findById(Id).orElseThrow(() -> new DeviceNotFoundException("Device not found with id " + Id));
         return mapToDto(device);
 
     }
@@ -35,7 +36,7 @@ public class DeviceService {
     }
 
     public DeviceDto updateDevice(Long id, DeviceDto input){
-        Device existingDevice = deviceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Device not found with id: " + id));
+        Device existingDevice = deviceRepository.findById(id).orElseThrow(() -> new DeviceNotFoundException("Device not found with id: " + id));
         existingDevice.setName(input.getName());
         existingDevice.setType(input.getType());
         existingDevice.setLocation(input.getLocation());
@@ -45,7 +46,7 @@ public class DeviceService {
     }
 
     public void deleteDevice(Long id){
-        Device toRemove = deviceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found with the id: " + id));
+        Device toRemove = deviceRepository.findById(id).orElseThrow(() -> new DeviceNotFoundException("User not found with the id: " + id));
         deviceRepository.delete(toRemove);
     }
 
