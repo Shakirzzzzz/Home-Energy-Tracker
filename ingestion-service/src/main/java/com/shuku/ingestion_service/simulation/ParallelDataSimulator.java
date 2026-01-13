@@ -47,7 +47,7 @@ public class ParallelDataSimulator implements CommandLineRunner {
         log.info("ParallelDataSimulator started...");
     }
 
-    //@Scheduled(fixedRateString = "${simulation.interval-ms}")
+    @Scheduled(fixedRateString = "${simulation.interval-ms}")
     public void sendMockData() {
         int batchSize = requestsPerInterval / parallelThreads;
         int remainder = requestsPerInterval % parallelThreads;

@@ -66,6 +66,7 @@ public class UserService {
                 .email(user.getEmail())
                 .address(user.getAddress())
                 .alerting(user.isAlerting())
+                .energyAlertingThreshold(user.getEnergyAlertingThreshold())
                 .build();
 
     }
