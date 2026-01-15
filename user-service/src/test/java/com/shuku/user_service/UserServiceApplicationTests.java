@@ -24,10 +24,10 @@ class UserServiceApplicationTests {
     void addUsersToDB() {
         for (int i = 1; i <= NUMBER_OF_USERS; i++) {
             User user = User.builder()
-                    .name("User" + i)
-                    .surname("Surname" + i)
-                    .email("user" + i + "@example.com")
-                    .address(i + " Example St")
+                    .name("Shakir" + i)
+                    .surname("Fayaz" + i)
+                    .email("shuku" + i + "@example.com")
+                    .address(i + " Street Ny")
                     .alerting(i % 2 == 0)
                     .energyAlertingThreshold(1000.0 + i)
                     .build();

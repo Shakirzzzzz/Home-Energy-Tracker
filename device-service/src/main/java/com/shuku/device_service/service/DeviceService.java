@@ -4,8 +4,11 @@ import com.shuku.device_service.dto.DeviceDto;
 import com.shuku.device_service.entity.Device;
 import com.shuku.device_service.exception.DeviceNotFoundException;
 import com.shuku.device_service.repository.DeviceRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+@Slf4j
 @Service
 public class DeviceService {
 
@@ -48,6 +51,14 @@ public class DeviceService {
     public void deleteDevice(Long id){
         Device toRemove = deviceRepository.findById(id).orElseThrow(() -> new DeviceNotFoundException("User not found with the id: " + id));
         deviceRepository.delete(toRemove);
+    }
+
+    public List<DeviceDto> getAllDevicesByUserId(Long userId){
+        List<Device> devices = deviceRepository.findAllByUserId(userId);
+        //debugging
+        log.info("********************* Fetched devices: {}", devices);
+        return devices.stream().map(this::mapToDto).toList();
+
     }
 
     private DeviceDto mapToDto(Device device) {

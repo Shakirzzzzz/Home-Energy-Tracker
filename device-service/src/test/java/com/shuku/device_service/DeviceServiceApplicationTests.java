@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class DeviceServiceApplicationTests {
 
-    public static final int NUMBER_OF_DEVICES = 200;
+    public static final int NUMBER_OF_DEVICES = 20;
     public static final int NUMBER_OF_USERS = 10;
     @Autowired
     private DeviceRepository deviceRepository;
@@ -25,7 +25,7 @@ class DeviceServiceApplicationTests {
     @Disabled
     @Test
     void createDevices(){
-        for(int i=1;i<=NUMBER_OF_DEVICES; i ++){
+        for(int i=1; i<=NUMBER_OF_DEVICES; i++){
             var device = Device.builder()
                     .name("Device"+ String.valueOf(i))
                     .type(DeviceType.values()[i % DeviceType.values().length])
