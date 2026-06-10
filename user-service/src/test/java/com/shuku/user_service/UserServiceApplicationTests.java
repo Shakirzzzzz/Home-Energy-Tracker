@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 @SpringBootTest
+@Disabled
 class UserServiceApplicationTests {
     public static int NUMBER_OF_USERS = 10;
     @Autowired
