@@ -19,11 +19,14 @@ services:
     container_name: kafka
     image: apache/kafka:latest
     ports:
-      - "9092:9092"
-      - "9094:9094"
+      - "9092:9092" #internal kafka (for kafbat)
+      - "9094:9094" # external (the one we use in our application
     environment:
+      # we are running this in kraft mode (no zookeeper) and kafka handles everything internally
+      #unique id for this kafka node(we can call broker and the server which runs kafka connect generally a node)
       KAFKA_NODE_ID: 1
       KAFKA_CLUSTER_ID: 'energy-tracker-cluster-1'
+      #roles for this node
       KAFKA_PROCESS_ROLES: 'broker,controller'
       KAFKA_LISTENERS: >
         PLAINTEXT://0.0.0.0:9092,
@@ -41,16 +44,16 @@ services:
         EXTERNAL:PLAINTEXT
 
       KAFKA_INTERNAL_BROKER_LISTENER_NAME: 'PLAINTEXT'
-
+      # as we only have one cluster we cant put replication factor greater than 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
 
 
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-
+      #autocreate a topic if ti doesnt exist (imp here)
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
-
+      # no of partitions per topic
       KAFKA_NUM_PARTITIONS: 1
 
     volumes:
@@ -78,6 +81,7 @@ services:
       DOCKER_INFLUXDB_INIT_ORG: shuku
       DOCKER_INFLUXDB_INIT_USERNAME: admin
       DOCKER_INFLUXDB_INIT_PASSWORD: admin123
+      # this is where our data is stored
       DOCKER_INFLUXDB_INIT_BUCKET: usage-bucket
       DOCKER_INFLUXDB_INIT_RETENTION: 1w
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: my-token

@@ -5,17 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Data // for getters and setters
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private Long id;
     private String name;
     private String surname;
     private String email;
     private String address;
-    private boolean alerting;
-    private double energyAlertingThreshold;
+    private boolean alerting; // user can choose to have alerting or not
+    private double energyAlertingThreshold; // if user chooses to have alerting then we need a threshold for it
 
 }

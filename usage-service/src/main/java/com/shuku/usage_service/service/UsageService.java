@@ -53,7 +53,7 @@ public class UsageService {
     @KafkaListener(topics = "energy-usage", groupId = "usage-service")
     public void energyUsageEvent(EnergyUsageEvent energyUsageEvent){
         //log.info("Received energy usage event {}", energyUsageEvent );
-
+        // this point is from influx db , we store data as a point in the influx db
         Point point = Point.measurement("energy-usage")
                 .addTag("deviceId",String.valueOf(energyUsageEvent.deviceId()))
                 .addField("energyConsumed",energyUsageEvent.energyConsumed())
@@ -78,6 +78,8 @@ public class UsageService {
                 """,influxBucket,oneHourAgo.toString(),now);
         QueryApi queryApi = influxDBClient.getQueryApi();
         List<FluxTable> tables = queryApi.query(fluxQuery, influxOrg);
+
+
         List<DeviceEnergy> deviceEnergies = new ArrayList<>();
 
         for(FluxTable table : tables){
@@ -96,9 +98,6 @@ public class UsageService {
         log.info("Aggregated the device energies over the past hour: {}", deviceEnergies);
         for(DeviceEnergy deviceEnergy: deviceEnergies){
             try{
-
-
-
                 final DeviceDto deviceResponse = deviceClient.getDeviceById(deviceEnergy.getDeviceId());
 
                 if(deviceResponse == null || deviceResponse.id() == null){
@@ -207,7 +206,7 @@ public class UsageService {
                     .build();
         }
 
-        //building a set of device to filter on the flux query
+        //building a set of device ids to filter on the flux query
         List<String> deviceIdStrings = devices.stream()
                 .map(Device::getId)
                 .filter(Objects::nonNull)
@@ -231,6 +230,7 @@ public class UsageService {
           |> group(columns: ["deviceId"])
           |> sum(column: "_value")
         """, influxBucket, start.toString(), now.toString(), deviceFilter);
+
         final Map<Long, Double> aggregatedDeviceEnergyMap = new HashMap<>();
 
         try{

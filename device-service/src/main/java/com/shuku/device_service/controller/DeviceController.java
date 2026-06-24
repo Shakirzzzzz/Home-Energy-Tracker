@@ -17,7 +17,7 @@ import java.util.List;
 @Tag(name = "Device Actions Endpoints", description = "Operations related to the home devices")
 public class DeviceController {
 
-    private DeviceService deviceService;
+    private final DeviceService deviceService;
 
     public DeviceController(DeviceService deviceService){
         this.deviceService = deviceService;

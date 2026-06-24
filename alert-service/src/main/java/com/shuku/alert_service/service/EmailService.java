@@ -38,7 +38,7 @@ public class EmailService {
                     .createdAt(LocalDateTime.now())
                     .userId(userId)
                     .build();
-            //save it on db
+            //save it on db and run sql immediately
             alertRepository.saveAndFlush(alert);
         }catch (MailException exe){
             log.error("Failed to send email to: {}",to,exe);

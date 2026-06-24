@@ -24,7 +24,7 @@ public class InsightService {
     }
 
     public InsightDto getOverview(Long userId){
-        //fetch data from usage-service
+        //fetch data from usage-service for the past x days ill hard code it for now
         final UsageDto usageDto = usageClient.getXDaysUsageForUser(userId,3);
         double totalUsage = usageDto.devices().stream().mapToDouble(DeviceDto::energyConsumed).sum();
 

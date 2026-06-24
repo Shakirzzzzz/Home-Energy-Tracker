@@ -23,6 +23,7 @@ public class UserServiceRoutes {
     @Bean
     public RouterFunction<ServerResponse> userRoute(){
         return route("user-service")
+                // http is the handler here
                 .route(RequestPredicates.path("/api/v1/user/**"),http())
                 .before(uri("http://localhost:8080"))
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
@@ -36,9 +37,8 @@ public class UserServiceRoutes {
     @Bean
     public RouterFunction<ServerResponse> userFallbackRoute(){
         return route("fallbackRoute")
-                .route(RequestPredicates.path("/fallbackRoute"),
-                request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
-                        .body("User service is down"))
+                // here the handler is out own lambda which returns
+                .route(RequestPredicates.path("/fallbackRoute"), request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE).body("User service is down"))
                 .build();
     }
 

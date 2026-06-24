@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+// to enable scheduling for the simulation to run
 @EnableScheduling
 public class IngestionServiceApplication {
 
