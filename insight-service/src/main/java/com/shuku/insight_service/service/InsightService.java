@@ -7,7 +7,7 @@ import com.shuku.insight_service.dto.UsageDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.google.genai.GoogleGenAiChatModel;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 public class InsightService {
 
     private UsageClient usageClient;
-    private OllamaChatModel ollamaChatModel;
+    private GoogleGenAiChatModel chatClient;
 
-    public InsightService(UsageClient usageClient, OllamaChatModel ollamaChatModel){
+    public InsightService(UsageClient usageClient, GoogleGenAiChatModel chatClient){
 
         this.usageClient=usageClient;
-        this.ollamaChatModel=ollamaChatModel;
+        this.chatClient=chatClient;
     }
 
     public InsightDto getOverview(Long userId){
@@ -39,7 +39,7 @@ public class InsightService {
                 .append(usageDto.devices())
                 .toString();
 
-        ChatResponse response = ollamaChatModel.call(
+        ChatResponse response = chatClient.call(
                 Prompt.builder()
                         .content(prompt)
                         .build()
@@ -60,7 +60,7 @@ public class InsightService {
         double totalUsage = usageDto.devices().stream().mapToDouble(DeviceDto::energyConsumed).sum();
 
 
-        log.info("Generating overview(Ollama) for userId {} with total usage {}",userId,totalUsage);
+        log.info("Generating overview(Gemini) for userId {} with total usage {}",userId,totalUsage);
 
         String prompt = new StringBuilder()
                 .append("This is my total consumption over the past 3 days.")
@@ -70,7 +70,7 @@ public class InsightService {
                 .toString();
 
 
-        ChatResponse response = ollamaChatModel.call(
+        ChatResponse response = chatClient.call(
                 Prompt.builder()
                         .content(prompt)
                         .build()
