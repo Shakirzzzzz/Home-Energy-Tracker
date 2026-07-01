@@ -14,6 +14,8 @@ public class UserDto {
     private String surname;
     private String email;
     private String address;
+    private String username;
+    private String password;
     private boolean alerting; // user can choose to have alerting or not
     private double energyAlertingThreshold; // if user chooses to have alerting then we need a threshold for it
 

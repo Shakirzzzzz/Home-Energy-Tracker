@@ -25,6 +25,10 @@ public class User {
 
     private String address;
 
+    private String username;
+
+    private String keycloakId;
+
     private boolean alerting;
 
     private double energyAlertingThreshold;
